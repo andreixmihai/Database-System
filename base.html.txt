@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <title>Bibliotecă</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:20px}
+    nav a{margin-right:12px}
+    table{border-collapse:collapse; width:100%; margin-top:10px}
+    th,td{border:1px solid #ddd; padding:8px}
+    .msg{padding:10px; margin:10px 0; border:1px solid #ddd; background:#fafafa}
+    .btn{padding:6px 10px}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/books">Cărți</a>
+    <a href="/authors">Autori</a>
+    <a href="/loans">Împrumuturi</a>
+  </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for cat, msg in messages %}
+        <div class="msg">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</body>
+</html>

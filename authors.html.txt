@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Autori</h2>
+<a class="btn" href="/authors/new">+ Autor nou</a>
+
+<table>
+  <tr><th>ID</th><th>Nume</th><th>Țară</th><th>Acțiuni</th></tr>
+  {% for a in authors %}
+  <tr>
+    <td>{{ a.id }}</td>
+    <td>{{ a.name }}</td>
+    <td>{{ a.country }}</td>
+    <td>
+      <a href="/authors/{{ a.id }}/edit">Edit</a>
+      <form method="post" action="/authors/{{ a.id }}/delete" style="display:inline">
+        <button class="btn" type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

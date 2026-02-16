@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ "Edit autor" if author else "Autor nou" }}</h2>
+<form method="post">
+  <label>Nume:</label><br>
+  <input name="name" value="{{ author.name if author else '' }}"><br><br>
+
+  <label>Țară:</label><br>
+  <input name="country" value="{{ author.country if author else '' }}"><br><br>
+
+  <button class="btn" type="submit">Salvează</button>
+</form>
+{% endblock %}

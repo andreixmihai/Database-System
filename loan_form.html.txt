@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Împrumut nou</h2>
+<form method="post">
+  <label>Carte disponibilă:</label><br>
+  <select name="book_id">
+    {% for b in books %}
+      <option value="{{ b.id }}">{{ b.title }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <label>Nume cititor:</label><br>
+  <input name="borrower_name"><br><br>
+
+  <label>Data împrumut:</label><br>
+  <input type="date" name="loan_date"><br><br>
+
+  <label>Scadență:</label><br>
+  <input type="date" name="due_date"><br><br>
+
+  <button class="btn" type="submit">Salvează</button>
+</form>
+{% endblock %}

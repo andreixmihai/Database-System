@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ "Edit carte" if book else "Carte nouă" }}</h2>
+<form method="post">
+  <label>Titlu:</label><br>
+  <input name="title" value="{{ book.title if book else '' }}"><br><br>
+
+  <label>Autor:</label><br>
+  <select name="author_id">
+    {% for a in authors %}
+      <option value="{{ a.id }}" {% if book and a.id == book.author_id %}selected{% endif %}>
+        {{ a.name }}
+      </option>
+    {% endfor %}
+  </select><br><br>
+
+  <label>ISBN:</label><br>
+  <input name="isbn" value="{{ book.isbn if book else '' }}"><br><br>
+
+  <label>An:</label><br>
+  <input type="number" name="year" value="{{ book.year if book else '' }}"><br><br>
+
+  <label>Gen:</label><br>
+  <input name="genre" value="{{ book.genre if book else '' }}"><br><br>
+
+  <button class="btn" type="submit">Salvează</button>
+</form>
+{% endblock %}

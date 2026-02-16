@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Împrumuturi</h2>
+<a class="btn" href="/loans/new">+ Împrumut nou</a>
+
+<table>
+  <tr><th>ID</th><th>Carte</th><th>Cititor</th><th>Data</th><th>Scadență</th><th>Returnată</th><th>Acțiuni</th></tr>
+  {% for l in loans %}
+  <tr>
+    <td>{{ l.id }}</td>
+    <td>{{ l.title }}</td>
+    <td>{{ l.borrower_name }}</td>
+    <td>{{ l.loan_date }}</td>
+    <td>{{ l.due_date }}</td>
+    <td>{{ l.returned_date }}</td>
+    <td>
+      {% if not l.returned_date %}
+      <form method="post" action="/loans/{{ l.id }}/return" style="display:inline">
+        <button class="btn" type="submit">Returnează</button>
+      </form>
+      {% else %}
+      —
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

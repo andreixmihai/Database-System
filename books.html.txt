@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Cărți</h2>
+<a class="btn" href="/books/new">+ Carte nouă</a>
+
+<table>
+  <tr>
+    <th>ID</th><th>Titlu</th><th>Autor</th><th>An</th><th>Gen</th><th>ISBN</th><th>Status</th><th>Acțiuni</th>
+  </tr>
+  {% for b in books %}
+  <tr>
+    <td>{{ b.id }}</td>
+    <td>{{ b.title }}</td>
+    <td>{{ b.author_name }}</td>
+    <td>{{ b.year }}</td>
+    <td>{{ b.genre }}</td>
+    <td>{{ b.isbn }}</td>
+    <td>{{ "Disponibilă" if b.available else "Împrumutată" }}</td>
+    <td>
+      <a href="/books/{{ b.id }}/edit">Edit</a>
+      <form method="post" action="/books/{{ b.id }}/delete" style="display:inline">
+        <button class="btn" type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
