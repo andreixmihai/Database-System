@@ -1,4 +1,4 @@
-# Library Management System
+# Library App
 
 A web application developed using **Python Flask** and **MySQL** for managing a library database.
 
